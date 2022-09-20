@@ -1,0 +1,18 @@
+header{
+    position:fixed;
+    top: 0px;
+    background-color: antiquewhite;
+}
+
+footer{
+    position:fixed;
+    bottom: 0px;
+    background-color: antiquewhite;
+}
+
+#copyright{
+    position: absolute;
+    bottom: 35px;
+    right: 35px;
+}
+
