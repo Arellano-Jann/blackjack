@@ -14,7 +14,7 @@ nav{
     display:flex;
 }
 
-nav ul {
+nav > ul {
     display:flex;
     align-items: center;
     justify-content: center;
@@ -26,3 +26,24 @@ nav ul {
     right: 35px;
 }
 
+@media (max-width: 800px) {
+    .disappearing{
+        display: none;
+        /* visibility: hidden; */
+    }
+    /* .mobileFeature{
+        display: flex;
+        visibility: visible;
+    } */
+}
+
+@media (min-width: 800px) {
+    /* .disappearing{
+        display: flex;
+        visibility: visible;
+    } */
+    .mobileFeature{
+        display: none;
+        /* visibility: hidden; */
+    }
+}
