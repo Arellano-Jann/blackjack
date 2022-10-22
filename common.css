@@ -1,3 +1,7 @@
+:root{
+    --primary-color: black;
+}
+
 header{
     position:fixed;
     top: 0px;
@@ -9,6 +13,28 @@ footer{
     bottom: 0px;
     background-color: antiquewhite;
 }
+
+a{
+    font-family: 'Noto Sans Mono', monospace;
+    color: black;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:visited{
+    color:rgb(24, 24, 24);
+}
+
+a:hover{
+    text-decoration: underline;
+}    
+a:focus, a:active{
+    text-decoration:solid;
+}
+
+
 
 nav{
     display:flex;
@@ -24,6 +50,20 @@ nav > ul {
     position: absolute;
     bottom: 35px;
     right: 35px;
+    font-size: 10px;
+}
+
+h1, h2 {
+    font-family: 'Noto Sans Mono', monospace;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 30px;
 }
 
 @media (max-width: 800px) {
@@ -31,19 +71,20 @@ nav > ul {
         display: none;
         /* visibility: hidden; */
     }
-    /* .mobileFeature{
+    .mobileFeature{
         display: flex;
         visibility: visible;
-    } */
+    }
 }
 
 @media (min-width: 800px) {
-    /* .disappearing{
+    .disappearing{
         display: flex;
         visibility: visible;
-    } */
+    }
     .mobileFeature{
         display: none;
         /* visibility: hidden; */
+        color: var(--primary-color);
     }
 }

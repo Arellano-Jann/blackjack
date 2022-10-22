@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Table</title>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;700&family=Noto+Sans+Mono:wght@300&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="./reset.css">
+	<link rel="stylesheet" href="./common.css">
+	<link rel="stylesheet" href="./table.css">
 </head>
 <body>
     <header>
@@ -19,37 +25,34 @@
     <main>
         Table
     </main>
-        <section>
+        <section id="dealersCards" class="mdc-card">
             <h2>
                 Dealer
             </h2>
                 <ol>
-                    <ls>Heart King</ls>
-                    <ls>Heart Queen</ls>
+                    <li data-blackjack-value="??">Face Down</li>
+                    <li data-blackjack-value="10">Queen of Hearts</li>
                 </ol>
         </section>
-        <section>
+        <section id="playersCards" class="mdc-card">
             <h2>
                 Player
             </h2>
                 <ol>
-                    <ls>Heart Ace</ls>
-                    <ls>Spade Ace</ls>
+                    <li data-blackjack-value="11/1">Ace of Spades</li>
+                    <li data-blackjack-value="11/1">Ace of Hearts</li>
                 </ol>
         </section>
-        <section>
-            <h3>Player's Options</h3>
-            <dl>
-                <dt>Hit</dt>
-                <dt>Stand</dt>
-                <dt>Split</dt>
-            </dl>
-        </section>
-        <section>
+        <section id="playersActions" class="mdc-card">
             <h3>Player's Actions</h3>
-            <button type="button" disabled>Hit</button>
-            <button type="button">Stand</button>
-            <button type="button">Split</button>
+            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Hit</button>
+            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Stand</button>
+            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Split</button>
+            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Insurance</button>
+            <!-- <button type="button" data-user-hints=": Get card">Hit</button>
+            <button type="button" data-user-hints=": ???">Stand</button>
+            <button type="button" data-user-hints=": ???">Split</button>
+            <button type="button" data-user-hints=": ???">Insurance</button> -->
         </section>
     <footer>
         <p>&copy; Classy Development</p>

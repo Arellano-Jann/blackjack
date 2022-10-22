@@ -1,0 +1,74 @@
+header, footer {
+    background-color: var(--mdc-theme-primary);
+}
+
+/* button {
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
+.mdc-icon-button {
+    display: inline-block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    fill: currentColor;
+    color: inherit;
+    font-size: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+}
+
+.material-icons {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+} */

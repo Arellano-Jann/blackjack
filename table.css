@@ -1,0 +1,10 @@
+ol li:hover::after{
+    content: attr(data-blackjack-value);
+    position:absolute;
+    font-size:small;
+}
+
+button:hover::after{
+    content: attr(data-user-hints);
+}
+
