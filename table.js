@@ -109,5 +109,3 @@ function timeToPlay() {
     players_actions_section.classList.remove("hidden");
     betting_section.classList.add("hidden");
 }
-
-timeToPlay();
