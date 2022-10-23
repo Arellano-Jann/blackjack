@@ -2,6 +2,18 @@ header, footer {
     background-color: var(--mdc-theme-primary);
 }
 
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    background-color: var(--mdc-theme-primary);
+    color: var(--mdc-theme-on-primary);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 /* button {
     appearance: auto;
     writing-mode: horizontal-tb !important;
