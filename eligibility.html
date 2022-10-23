@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons%22%3E">
+    <link rel="stylesheet" href="./shell.css">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;700&family=Noto+Sans+Mono:wght@300&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin> -->
+    <title>Eligibility Form</title>
+</head>
+
+<body>
+    <script src="./shell.js"></script>
+    <script src="./eligibility.js"></script>
+    <section>
+        <header class="mdc-top-app-bar background-color">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <!-- <button class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon--unbounded">menu</button> -->
+                    <span class="mdc-top-app-bar__title">Blackjack</span>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                    <nav>
+                        <button class="mdc-icon-button"> <a href="./index.html">About</a></button>
+                        <button class="mdc-icon-button"> <a href="./rules.html">Rules</a></button>
+                        <button class="mdc-icon-button"> <a href="./table.html">Table</a></button>
+                    </nav>
+
+                </section>
+            </div>
+        </header>
+    </section>
+
+    <main>
+        <div>
+            <form id="eligibility-form" class="mdc-card">
+                <label class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Age</span>
+                    <input class="mdc-text-field__input" type="number" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </label>
+
+                <label class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Birth Date</span>
+                    <input class="mdc-text-field__input" type="date" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </label>
+                <label class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Full Name</span>
+                    <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </label>
+
+                <label class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Username</span>
+                    <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </label>
+
+                <label class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Enter Password</span>
+                    <input class="mdc-text-field__input" type="password" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </label>
+
+                <label class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Confirm Password</span>
+                    <input class="mdc-text-field__input" type="password" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </label>
+
+                <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                        <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />
+                        <div class="mdc-checkbox__background">
+                            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                <path class="mdc-checkbox__checkmark-path" fill="none"
+                                    d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                            </svg>
+                            <div class="mdc-checkbox__mixedmark"></div>
+                        </div>
+                        <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                    <label for="legal-checkbox">u legal dog?</label>
+                </div>
+
+                <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                        <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />
+                        <div class="mdc-checkbox__background">
+                            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                <path class="mdc-checkbox__checkmark-path" fill="none"
+                                    d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                            </svg>
+                            <div class="mdc-checkbox__mixedmark"></div>
+                        </div>
+                        <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                    <label for="terms-checkbox">u better say yes to the terms of service</label>
+                </div>
+
+                <button class="mdc-button mdc-button--raised mdc-button--leading">
+                    <span class="mdc-button__ripple"></span>
+                    <i class="material-icons mdc-button__icon" aria-hidden="true">x</i>
+                    <span class="mdc-button__label">Sign up</span>
+                </button>
+
+
+                <a href="https://mnapg.org/understanding-problem-gambling/">
+                    <button class="mdc-button mdc-button--raised mdc-button--leading">
+                        <span class="mdc-button__ripple"></span>
+                        <i class="material-icons mdc-button__icon" aria-hidden="true">x</i>
+                        <span class="mdc-button__label">Info on Problem Gambling</span>
+                    </button>
+                </a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <span id="copyright">Blackjack</span>
+    </footer>
+
+</body>
+
+</html>
