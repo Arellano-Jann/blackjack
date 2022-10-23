@@ -8,11 +8,15 @@
 	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;700&family=Noto+Sans+Mono:wght@300&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons%22%3E">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 	<link rel="stylesheet" href="./reset.css">
 	<link rel="stylesheet" href="./common.css">
 	<link rel="stylesheet" href="./table.css">
+    <link rel="stylesheet" href="./utility.css">
 </head>
-<body>
+<body onload="addBankroll()">
     <header>
         <nav>
           <ul>
@@ -36,8 +40,7 @@
         </section>
         <section 
             id="playersCards" 
-            class="mdc-layout-grid__cell--span-6 mdc-card"
-        >
+            class="mdc-layout-grid__cell--span-6 mdc-card">
             <h2>
                 Player
             </h2>
@@ -76,6 +79,27 @@
             <button type="button" data-user-hints=": ???">Stand</button>
             <button type="button" data-user-hints=": ???">Split</button>
             <button type="button" data-user-hints=": ???">Insurance</button> -->
+        </section>
+
+        <section id="betting" class="mdc-card">
+            <form>
+                <span>In the bank: <span id="bankroll">$2022</span>
+                </span>
+
+                <label id="users-wager" class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Wager Amount</span>
+                    <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                    <span class="mdc-line-ripple"></span>
+                </label>
+
+                <button id="bet-button" class="mdc-button">
+                    <span class="mdc-button__ripple">
+                    Wager
+                    </span>
+                </button>
+            
+            </form>
         </section>
     <footer>
         <script src="./table.js"></script>
