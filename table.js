@@ -74,7 +74,7 @@ hitButton.addEventListener("click", dealRandomCard
 );
 
 
-var bankroll = 2022;
+var bankroll = parseInt(localStorage.getItem("bankroll")) || 2022;
 const players_actions_section = document.querySelector("#playersActions");
 const betting_section = document.querySelector("#betting");
 const betting_form = document.forms[0];
@@ -87,7 +87,9 @@ function addBankroll() {
 }
 
 function getBankroll(){ return bankroll }
-function setBankroll(newBalance){ bankroll = newBalance; }
+function setBankroll(newBalance){ 
+    bankroll = newBalance
+    localStorage.setItem("bankroll", bankroll); }
 function timeToBet() { 
     players_actions_section.classList.add("hidden");
     betting_section.classList.remove("hidden");
