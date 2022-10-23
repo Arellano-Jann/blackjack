@@ -12,11 +12,12 @@ footer{
     position:fixed;
     bottom: 0px;
     background-color: antiquewhite;
+    color: black;
 }
 
 a{
     font-family: 'Noto Sans Mono', monospace;
-    color: black;
+    
 }
 
 a:link{
