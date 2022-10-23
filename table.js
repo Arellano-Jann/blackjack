@@ -89,7 +89,10 @@ function addBankroll() {
 function getBankroll(){ return bankroll }
 function setBankroll(newBalance){ 
     bankroll = newBalance
-    localStorage.setItem("bankroll", bankroll); }
+    localStorage.setItem("bankroll", bankroll); 
+}
+
+
 function timeToBet() { 
     players_actions_section.classList.add("hidden");
     betting_section.classList.remove("hidden");
@@ -107,4 +110,4 @@ function timeToPlay() {
     betting_section.classList.add("hidden");
 }
 
-
+timeToPlay();
