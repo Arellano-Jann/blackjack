@@ -25,7 +25,7 @@
     <main>
         Table
     </main>
-        <section id="dealersCards" class="mdc-card">
+        <section id="dealersCards" class="mdc-layout-grid__cell--span-6 mdc-card">
             <h2>
                 Dealer
             </h2>
@@ -34,7 +34,10 @@
                     <li data-blackjack-value="10">Queen of Hearts</li>
                 </ol>
         </section>
-        <section id="playersCards" class="mdc-card">
+        <section 
+            id="playersCards" 
+            class="mdc-layout-grid__cell--span-6 mdc-card"
+        >
             <h2>
                 Player
             </h2>
@@ -43,12 +46,32 @@
                     <li data-blackjack-value="11/1">Ace of Hearts</li>
                 </ol>
         </section>
-        <section id="playersActions" class="mdc-card">
+        <section id="playersActions" class="mdc-layout-grid__cell--span-6 mdc-card">
             <h3>Player's Actions</h3>
-            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Hit</button>
-            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Stand</button>
-            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Split</button>
-            <button class="mdc-button">  <span class="mdc-button__ripple"></span>Insurance</button>
+            <button class="mdc-button">
+                <span class="mdc-button__ripple">
+                Hit
+                </span>
+            </button>
+            
+            <button class="mdc-button">
+                <span class="mdc-button__ripple">
+                Stand
+                </span>
+            </button>
+            
+            <button class="mdc-button">
+                <span class="mdc-button__ripple">
+                Split
+                </span>
+            </button>
+            
+            <button class="mdc-button">
+                <span class="mdc-button__ripple">
+                Insure
+                </span>
+            </button>
+            
             <!-- <button type="button" data-user-hints=": Get card">Hit</button>
             <button type="button" data-user-hints=": ???">Stand</button>
             <button type="button" data-user-hints=": ???">Split</button>
