@@ -109,3 +109,22 @@ function timeToPlay() {
     players_actions_section.classList.remove("hidden");
     betting_section.classList.add("hidden");
 }
+
+// 1:15:00
+function getShoe(callback){
+    fetch(`https://www.deckofcardsapi.com/api/deck/new/shuffle?deck_count=6`)
+    .then((res) => res.json())
+    .then((data) => {
+        callback(data)
+    });
+}
+
+getShoe((data => (deckId = data.deck_id)));
+
+function drawFourCards(callback){
+    fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw?count=4`)
+    .then((res) => res.json())
+    .then((data) => {
+        callback(data.cards);
+    });
+}
