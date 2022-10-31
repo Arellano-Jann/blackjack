@@ -6,7 +6,6 @@ footer {
     position: fixed;
     bottom: 0px;
     width: 100vw;
-    background-color: var(--mdc-theme-primary);
     color: var(--mdc-theme-on-primary);
     height: 64px;
     display: flex;

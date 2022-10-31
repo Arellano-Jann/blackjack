@@ -1,109 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Table</title>
-	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;700&family=Noto+Sans+Mono:wght@300&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blackjack Gaming Table</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-	<link rel="stylesheet" href="./reset.css">
-	<link rel="stylesheet" href="./common.css">
-	<link rel="stylesheet" href="./table.css">
-    <link rel="stylesheet" href="./utility.css">
-</head>
-<body onload="addBankroll()">
-    <header>
-        <nav>
-          <ul>
-            <li><a href="./table.html">Table</a></li>
-            <li><a href="./index.html">About</a></li>
-            <li><a href="./rules.html">Rules</a></li>
-          </ul>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="./shell.css" />
+    <link rel="stylesheet" href="./utility.css" />
+    <link rel="stylesheet" href="./table.css" />
+  </head>
+  <body>
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+      <div class="mdc-top-app-bar__row">
+        <section
+          class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start"
+        >
+          <span class="mdc-top-app-bar__title">Blackjack</span>
+        </section>
+        <nav id="navLinks" class="mdc-top-app-bar__section">
+          <a href="./index.html">
+            <button class="mdc-button">
+              <span class="mdc-button__ripple"></span>
+              <span class="mdc-button__label mdc-theme--on-primary">
+                About
+              </span>
+            </button>
+          </a>
+          <a href="./rules.html">
+            <button class="mdc-button">
+              <span class="mdc-button__ripple"></span>
+              <span class="mdc-button__label mdc-theme--on-primary">
+                Rules
+              </span>
+            </button>
+          </a>
+          <a href="./table.html">
+            <button class="mdc-button">
+              <span class="mdc-button__ripple"></span>
+              <span class="mdc-button__label mdc-theme--on-primary">
+                Gaming Table
+              </span>
+            </button>
+          </a>
         </nav>
+
+        <section
+          class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end"
+          role="toolbar"
+        >
+          <span id="loginIcon" class="material-icons"> login </span>
+          <span id="menu" class="material-icons"> menu </span>
+        </section>
+      </div>
     </header>
-    <main>
-        Table
+    <main
+      class="mdc-top-app-bar--fixed-adjust footer--fixed-adjust mdc-layout-grid"
+    >
+      <div class="mdc-layout-grid__inner main-container">
+        <section
+          id="dealersCards"
+          class="mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet mdc-card give-height flex-center space-evenly"
+        >
+          <h2>The Dealer's Cards</h2>
+          <ol class="flex-center space-evenly take-width">
+            <li data-blackjack-value="?">Face Down</li>
+            <li data-blackjack-value="6">Six of Clubs</li>
+          </ol>
+        </section>
+        <section
+          id="playersCards"
+          class="mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet mdc-card give-height flex-center space-evenly"
+        >
+          <h2>The Player's Cards</h2>
+          <ol class="flex-center space-evenly take-width">
+            <li data-blackjack-value="10">Ten of Diamonds</li>
+            <li data-blackjack-value="10">Queen of Clubs</li>
+          </ol>
+        </section>
+        <section
+          id="playersActions"
+          class="mdc-layout-grid__cell--span-12 mdc-card flex-center flex-column hidden"
+        >
+          <h3 class="ampler-padding">Player's Actions</h3>
+          <div class="flex-center space-evenly ampler-padding take-width">
+            <button
+              class="mdc-button mdc-button--raised"
+              data-user-hints="_me baby one more time"
+              id="hit-button"
+            >
+              <span class="mdc-button__label">Hit</span>
+            </button>
+            <button
+              class="mdc-button mdc-button--raised"
+              data-user-hints=""
+              id="stand-button"
+            >
+              <span class="mdc-button__label">Stand</span>
+            </button>
+            <button
+              class="mdc-button mdc-button--raised"
+              data-user-hints=""
+            >
+              <span class="mdc-button__label">Split</span>
+            </button>
+            <button
+              class="mdc-button mdc-button--raised"
+              data-user-hints=""
+            >
+              <span class="mdc-button__label">Insure</span>
+            </button>
+          </div>
+        </section>
+        <section
+          id="betting"
+          class="mdc-layout-grid__cell--span-12 mdc-card flex-center"
+        >
+          <form
+            id="wager-form"
+            class="ampler-padding flex-center space-evenly take-width"
+          >
+            <span id="player-bankroll">Bankroll: $2022</span>
+            <label class="mdc-text-field mdc-text-field--filled wager-input">
+              <span class="mdc-text-field__ripple"></span>
+              <span class="mdc-floating-label ampler-padding" id="wager-label"
+                >Wager Amount</span
+              >
+              <input
+                class="mdc-text-field__input"
+                type="number"
+                aria-labelledby="wager-label"
+              />
+              <span class="mdc-line-ripple"></span>
+            </label>
+            <button class="mdc-button mdc-button--raised">
+              <span class="mdc-button__label">Wager</span>
+            </button>
+          </form>
+        </section>
+      </div>
     </main>
-        <section id="dealersCards" class="mdc-layout-grid__cell--span-6 mdc-card">
-            <h2>
-                Dealer
-            </h2>
-                <ol>
-                    <li data-blackjack-value="??">Face Down</li>
-                    <li data-blackjack-value="10">Queen of Hearts</li>
-                </ol>
-        </section>
-        <section 
-            id="playersCards" 
-            class="mdc-layout-grid__cell--span-6 mdc-card">
-            <h2>
-                Player
-            </h2>
-                <ol>
-                    <li data-blackjack-value="11/1">Ace of Spades</li>
-                    <li data-blackjack-value="11/1">Ace of Hearts</li>
-                </ol>
-        </section>
-        <section id="playersActions" class="mdc-layout-grid__cell--span-6 mdc-card">
-            <h3>Player's Actions</h3>
-            <button class="mdc-button" id="hit-button">
-                <span class="mdc-button__ripple">
-                Hit
-                </span>
-            </button>
-            
-            <button class="mdc-button">
-                <span class="mdc-button__ripple">
-                Stand
-                </span>
-            </button>
-            
-            <button class="mdc-button">
-                <span class="mdc-button__ripple">
-                Split
-                </span>
-            </button>
-            
-            <button class="mdc-button">
-                <span class="mdc-button__ripple">
-                Insure
-                </span>
-            </button>
-            
-            <!-- <button type="button" data-user-hints=": Get card">Hit</button>
-            <button type="button" data-user-hints=": ???">Stand</button>
-            <button type="button" data-user-hints=": ???">Split</button>
-            <button type="button" data-user-hints=": ???">Insurance</button> -->
-        </section>
-
-        <section id="betting" class="mdc-card">
-            <form>
-                <span>In the bank: <span id="bankroll">$2022</span>
-                </span>
-
-                <label id="users-wager" class="mdc-text-field mdc-text-field--filled">
-                    <span class="mdc-text-field__ripple"></span>
-                    <span class="mdc-floating-label" id="my-label-id">Wager Amount</span>
-                    <input class="mdc-text-field__input" type="number" aria-labelledby="my-label-id">
-                    <span class="mdc-line-ripple"></span>
-                </label>
-
-                <button id="bet-button" class="mdc-button">
-                    <span class="mdc-button__ripple">
-                    Wager
-                    </span>
-                </button>
-            
-            </form>
-        </section>
-    <footer>
-        <script src="./table.js"></script>
-        <!-- <script src="./shell.js"></script> -->
-        <p>&copy; Classy Development</p>
+  <footer class="background-color">
+    <span id="copyright">&copy; TechWise  </span>
     </footer>
-</body>
+    <script src="./shell.js"></script>
+    <script src="./table.js"></script>
+  </body>
 </html>

@@ -11,8 +11,8 @@ header{
 footer{
     position:fixed;
     bottom: 0px;
-    background-color: antiquewhite;
-    color: black;
+    /* background-color: antiquewhite; */
+    /* color: black; */
 }
 
 a{
