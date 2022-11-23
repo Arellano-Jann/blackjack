@@ -15,6 +15,7 @@ const checkboxes = [].map.call(
 );
 
 let deckId;
+let wager;
 
 const suits = ["SPADES", "HEARTS", "DIAMONDS", "CLUBS"];
 const ranks = ["ACE", 2, 3, 4, 5, 6, 7, 8, 9, 10, "JACK", "QUEEN", "KING"];
@@ -41,7 +42,14 @@ function getRandomCard() {
 //   }
 
 function hitPlayer() {
-    drawOneCard(dealCard);
+    drawOneCard(dealCard).then(() => {
+        if (getPlayerTotal() > 21) bustPlayer();
+    });
+}
+
+function bustPlayer(){
+    console.log("player busted");
+    takeStakes(false);
 }
 
 function hitDealer() {
@@ -50,7 +58,7 @@ function hitDealer() {
 
 
 const playerCards = document.querySelector("#playersCards ol"); // selects the appropriate section
-const dealersCards = document.querySelector("#dealersCards ol")
+const dealersCards = document.querySelector("#dealersCards ol") // dealersCardsList in the videos
 function dealToDisplay(card){
     const newCard = document.createElement("li"); // creates a new list item
     newCard.setAttribute("data-blackjack-value", rankToValue(card.rank)); // sets the data-blackjack-value attribute to second argument
@@ -77,7 +85,7 @@ function rankToValue(rank){
 const hitButton = document.querySelector("#hit-button");
 hitButton.addEventListener("click", hitPlayer);
 const standButton = document.querySelector("#stand-button");
-standButton.addEventListener("click", timeToBet);
+standButton.addEventListener("click", dealersTurn);
 
 
 var bankroll = parseInt(localStorage.getItem("bankroll")) || 2022;
@@ -98,6 +106,12 @@ function setBankroll(newBalance){
     localStorage.setItem("bankroll", bankroll); 
 }
 
+function makeWager(event){
+    event.preventDefault();
+    console.log(betting_form[0].value); // betting_form[0] is the wagerInput
+    wager = parseInt(betting_form[0].value)
+    timeToPlay();
+}
 
 function timeToBet() { 
     clearCards();
@@ -106,11 +120,6 @@ function timeToBet() {
     document.getElementById("player-bankroll").innerHTML = `$${getBankroll()}`;
 }
 
-function makeWager(event){
-    event.preventDefault();
-    console.log(betting_form[0].value);
-    timeToPlay();
-}
 
 function timeToPlay() {
     clearCards();
@@ -139,10 +148,10 @@ function drawFourCards(callback){
 }
 
 function drawOneCard(callback) {
-    fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw?count=1`)
+    return fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw?count=1`)
     .then((res) => res.json())
     .then((data) => {
-        callback(data.cards[0]);
+        callback(data.cards[0]); // we don't want a list of lists so we access the first element
     });
 }
 
@@ -156,8 +165,9 @@ function dealFourCards(fourCards) {
 
 
 const backOfCardImageSrc = "https://previews.123rf.com/images/rlmf/rlmf1512/rlmf151200171/49319432-playing-cards-back.jpg";
-
+let dealersDownCard;
 function dealCard(card, isToPlayer = true, isFaceUp = true) {
+    if (!isFaceUp) dealersDownCard = card; // saves the down card so we can use it later
     const newCard = document.createElement("li");
     const image = document.createElement("img");
     image.setAttribute("src", isFaceUp ? card.image : backOfCardImageSrc);
@@ -173,7 +183,13 @@ function dealCard(card, isToPlayer = true, isFaceUp = true) {
         rankToValue(isFaceUp ? card.value : "Face Down"));
     newCard.appendChild(image);
     (isToPlayer ? playerCards : dealersCards).appendChild(newCard);
-    
+}
+
+function flipDownCard(){
+    const downCard = dealersCards.children[0].children[0];
+    downCard.setAttribute("srs", dealersDownCard.image);
+    downCard.setAttribute("alt", `${rankToWord(dealersDownCard.value)} of ${suitToWord(dealersDownCard.suit)}`);
+    downCard.setAttribute("data-blackjack-value", rankToValue(dealersDownCard.value));
 }
 
 function removeChildren(domNode){
@@ -185,4 +201,66 @@ function removeChildren(domNode){
 function clearCards(){
     removeChildren(dealersCards);
     removeChildren(playerCards);
+}
+
+function getPlayerTotal(getDealerTotal = false){
+    const playersCards = getDealerTotal ? dealersCards.children : playerCards.children;
+    let total = 0;
+    let aceCount = 0;
+    for (const card of playersCards){
+        console.log(card);
+        if (card.dataset.blackjackValue == "?"){
+            total += parseInt(rankToValue(dealersDownCard.value));
+        } else if (card.dataset.blackjackValue == "11/1"){
+            aceCount++;
+            total += 11;
+        } else{
+            total += parseInt(card.dataset["blackjackValue"]);
+        }
+    }
+    if (total > 21){ // acemath
+        while (aceCount > 0){
+            total -= 10;
+            aceCount--;
+        }
+    }
+    return total;
+}
+
+function getDealerTotal(){
+    return getPlayerTotal(true);
+}
+
+async function dealersTurn(){
+    flipDownCard();
+    while (getDealerTotal() < 17){ // wrong?
+        await hitDealer();
+    }
+    if (getDealerTotal() > 21){
+        console.log("dealer busted");
+        takeStakes(true);
+    }
+    else{
+        evaluateWinner();
+    }
+}
+
+function evaluateWinner(){
+    if (getPlayerTotal() > getDealerTotal()){
+        console.log("player won");
+        takeStakes(true);
+    } else if (getPlayerTotal() == getDealerTotal()){
+        console.log("push");
+        takeStakes(false, wasPush = true);
+    }else{
+        console.log("dealer won");
+        takeStakes(false);
+    }
+}
+
+function takeStakes(playerWon = false, wasPush = false, natural = false){
+    if (!wasPush){
+        setBankroll(getBankroll() + (playerWon ? (natural ? wager * 1.5 : wager) : -wager));
+    }
+    setTimeout(timeToBet, 3000);
 }
