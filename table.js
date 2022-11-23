@@ -203,38 +203,39 @@ function clearCards(){
     removeChildren(playerCards);
 }
 
-function getPlayerTotal(getDealerTotal = false){
+function getPlayerTotal(getDealerTotal = false) {
     const playersCards = getDealerTotal ? dealersCards.children : playerCards.children;
     let total = 0;
     let aceCount = 0;
-    for (const card of playersCards){
-        console.log(card);
-        if (card.dataset.blackjackValue == "?"){
-            total += parseInt(rankToValue(dealersDownCard.value));
-        } else if (card.dataset.blackjackValue == "11/1"){
-            aceCount++;
-            total += 11;
-        } else{
-            total += parseInt(card.dataset["blackjackValue"]);
-        }
+    for (const card of playersCards) {
+      console.log(card);
+  
+      if (card.dataset.blackjackValue == "?") {
+        total += parseInt(rankToValue(dealersDownCard.value));
+      } else if (card.dataset.blackjackValue == "11/1") {
+        total += 11;
+        aceCount++;
+      } else {
+        total += parseInt(card.dataset["blackjackValue"]);
+      }
     }
-    if (total > 21){ // acemath
-        while (aceCount > 0){
-            total -= 10;
-            aceCount--;
-        }
+    if (total > 21) {
+      while (aceCount > 0) {
+        total -= 10;
+        aceCount--;
+      }
     }
     return total;
-}
+  }
 
 function getDealerTotal(){
     return getPlayerTotal(true);
 }
 
-async function dealersTurn(){
+function dealersTurn(){
     flipDownCard();
     while (getDealerTotal() < 17){ // wrong?
-        await hitDealer();
+        hitDealer();
     }
     if (getDealerTotal() > 21){
         console.log("dealer busted");
