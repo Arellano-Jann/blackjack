@@ -78,6 +78,7 @@ function timeToPlay() {
     players_actions_section.classList.remove("hidden");
     betting_section.classList.add("hidden");
     drawFourCards(dealFourCards);
+    startPlayerTimeOut();
 }
 
 function addBankroll() { // not needed anymore but keeping here for reference
@@ -281,6 +282,26 @@ function takeStakes(playerWon = false, wasPush = false, natural = false){
     setTimeout(timeToBet, 3000);
 }
 
+
+// use the setTimeout builtin function to timeout after 10 seconds of no button presses
+// this timeout should trigger the dealersTurn function
+// pressing the hitButton or standButton should cancel the timeout
+
+let playerTimeOut;
+function startPlayerTimeOut(){
+    playerTimeOut = setTimeout(timeOutPlayer, 10000);
+}
+
+function timeOutPlayer(){
+    console.log("player timeout");
+    dealersTurn();
+}
+
+function cancelPlayerTimeOut(){
+    clearTimeout(playerTimeout);
+}
+hitButton.addEventListener("click", cancelPlayerTimeOut);
+standButton.addEventListener("click", cancelPlayerTimeOut);
 
 
 
